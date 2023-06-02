@@ -1,7 +1,10 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import {Form , Button , Card } from "react-bootstrap"
 
 const Signup = () => {
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const passwordConfirmRef = useRef()
   return (
       <>
           <Card>
