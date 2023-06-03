@@ -1,5 +1,5 @@
 import React,{useRef, useState} from 'react'
-import { Form, Button, Card } from "react-bootstrap"
+import { Form, Button, Card , Alert} from "react-bootstrap"
 import { useAuth } from '../context/AuthContext'
 const Signup = () => {
   const emailRef = useRef()
@@ -7,8 +7,9 @@ const Signup = () => {
   const passwordConfirmRef = useRef()
   const { SignUp } = useAuth()
   const [error, setError] = useState();
-  const [loading, setLoading] = useState()
-    function handleSubmit(e) {
+  const [loading, setLoading] = useState(false)
+
+    async function handleSubmit(e) {
       e.preventDefault() 
         
   if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -27,7 +28,8 @@ const Signup = () => {
       <>
           <Card>
               <Card.Body>
-                <h1 className='text-center mb-4'>Sigh up</h1>
+          <h1 className='text-center mb-4'>Sigh up</h1>
+          {error && <Alert variant='danger'>{error}</Alert>}
                   <Form onSubmit={handleSubmit}> 
                     <Form.Group id='Email'>
                       <Form.Label>Email</Form.Label>
@@ -40,7 +42,7 @@ const Signup = () => {
                       <Form.Label>Password-confirm</Form.Label>
                       <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <Button type="submit" className="w-100">Sign Up</Button>
+            <Button type="submit" className="w-100" disabled={loading}>Sign Up</Button>
                   </Form>
               </Card.Body>
           </Card>
