@@ -9,6 +9,11 @@ export function useAuth() {
 
 export function AuthContext({ children }) {
     const [currntuser, setCurrntuser] = useStateState();
+
+    function signUp(email,password) {       
+        auth.createUserWithEmailAndPassword(email,password)
+    }
+
     const value = {
         currentuser
     }
