@@ -1,5 +1,8 @@
-import firebase from "firebase/app"
-import "firebase/auth"
+import firebase from 'firebase/app';
+import 'firebase/auth'; // Import any other specific modules you need from firebase
+
+
+
 const app = firebase.initializeApp({
         apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
         authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
